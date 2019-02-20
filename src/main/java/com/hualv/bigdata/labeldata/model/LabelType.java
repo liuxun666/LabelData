@@ -2,6 +2,7 @@ package com.hualv.bigdata.labeldata.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class LabelType {
@@ -14,6 +15,8 @@ public class LabelType {
     private String optionIds;
     @Column(columnDefinition = "int default 0 COMMENT '标记类型的状态,0：正常'")
     private Integer status;
+    @Transient
+    private List<Option> options;
 
     public Long getId() {
         return id;
@@ -45,5 +48,13 @@ public class LabelType {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public List<Option> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<Option> options) {
+        this.options = options;
     }
 }
