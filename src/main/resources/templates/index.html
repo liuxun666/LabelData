@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <title>文本标注</title>
+</head>
+<script th:src="@{jquery/jquery-3.3.1.min.js}" type="text/javascript"></script>
+<script th:src="@{bootstrap/js/bootstrap.min.js}"></script>
+<body>
+    <div class="panel panel-primary">
+        <p class="text-primary">文本：</p>
+        <p class="panel panel-primary text-primary"><span th:text="${data.content}">文本</span> </p>
+        <li th:each="label: ${data.labels}">
+            <p class="panel panel-body" th:text="${label.labelName}"></p>
+            <p th:each="${option: label.options}">
+                <span th:class="${label.type}" th:onclick="select(${option})" th:text="${option}"></span>
+            </p>
+        </li>
+        <button class="btn-primary" th:onclick="submit()">提交</button>
+    </div>
+</body>
+</html>
